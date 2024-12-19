@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
-  background: url('your-hero-image.jpg') center/cover no-repeat;
-  height: 500px;
+  background: url('/assets/IMG_8819.png') center/cover no-repeat;  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;

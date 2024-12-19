@@ -1,12 +1,18 @@
+// ProductGrid.js
 import React from 'react';
-import Product from './Product';
-import './ProductGrid.css';
-
+import './ProductGrid.css'; // Add necessary styles for responsive grid
+import TransparentButton from './TransparentButton';
 const ProductGrid = ({ products }) => {
   return (
     <div className="product-grid">
       {products.map((product) => (
-        <Product key={product.id} product={product} />
+        <div key={product.id} className="product-card">
+          <img src={product.image} alt={product.name} />
+          <h3>{product.name}</h3>
+          <p>{product.price}</p>
+          
+      <TransparentButton text="Click Me" />
+        </div>
       ))}
     </div>
   );

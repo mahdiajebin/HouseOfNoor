@@ -1,61 +1,93 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Corrected imports
-import './App.css';
-import React from 'react';
-import AuthComponent from './AuthComponent';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import ProductGrid from './components/ProductGrid';
+import Home from './components/Home';
+import Abaya from './components/Abaya';
+import Bag from './components/Bag';
+import Sale from './components/Sale';
+import Info from './components/Info';
 import Footer from './components/Footer';
+const sampleProducts = [
+  {
+    id: 1,
+    name: 'Elegant Abaya',
+    price: '$50.00',
+    image: '/assets/IMG_6542.jpeg', // Updated with your image path
+    category: 'Abayas',
+    onSale: false,
+  },
+  {
+    id: 2,
+    name: 'Classic Black Abaya',
+    price: '$45.00',
+    image: '/assets/IMG_6606.jpeg', // Updated with your image path
+    category: 'Abayas',
+    onSale: true,
+  },
+  {
+    id: 3,
+    name: 'Luxury Leather Bag',
+    price: '$120.00',
+    image: '/assets/IMG_6694.jpeg', // Updated with your image path
+    category: 'Bags',
+    onSale: false,
+  },
+  {
+    id: 4,
+    name: 'Chic Handbag',
+    price: '$85.00',
+    image: '/assets/IMG_6734.jpeg', // Updated with your image path
+    category: 'Bags',
+    onSale: true,
+  },
+  {
+    id: 5,
+    name: 'Summer Sale Abaya',
+    price: '$35.00',
+    image: '/assets/IMG_6877.jpeg', // Updated with your image path
+    category: 'Abayas',
+    onSale: true,
+  },
+  {
+    id: 6,
+    name: 'Stylish Tote Bag',
+    price: '$70.00',
+    image: '/assets/IMG_7398.jpeg', // Updated with your image path
+    category: 'Bags',
+    onSale: false,
+  },
+  {
+    id: 7,
+    name: 'Premium Leather Bag',
+    price: '$150.00',
+    image: '/assets/IMG_8816.jpeg', // Updated with your image path
+    category: 'Bags',
+    onSale: true,
+  },
+  {
+    id: 8,
+    name: 'Exclusive Designer Abaya',
+    price: '$90.00',
+    image: '/assets/IMG_8819.png', // Updated with your image path
+    category: 'Abayas',
+    onSale: true,
+  },
+];
 
-const App = () => {
 
-  const productData = [
-    {
-      id: 1,
-      name: 'Reyyan Abaya',
-      price: '£29.99',
-      image: 'https://via.placeholder.com/300x400?text=Reyyan+Abaya', // Dummy image
-    },
-    {
-      id: 2,
-      name: 'Suede Sweater Dress',
-      price: '£34.99',
-      image: 'https://via.placeholder.com/300x400?text=Suede+Sweater+Dress', // Dummy image
-    },
-    {
-      id: 3,
-      name: 'Bow Kimono',
-      price: '£35.00',
-      image: 'https://via.placeholder.com/300x400?text=Bow+Kimono', // Dummy image
-    },
-    {
-      id: 4,
-      name: 'Amani Abaya',
-      price: '£36.00',
-      image: 'https://via.placeholder.com/300x400?text=Amani+Abaya', // Dummy image
-    },
-  ];
-  
-
+function App() {
   return (
     <Router>
       <Navbar />
-      <Routes> {/* Use Routes instead of Switch */}
-        <Route path="/" element={
-          <>
-            <HeroSection />
-            <ProductGrid products={productData} />
-          </>
-        } />
-        <Route path="/abayas" element={<ProductGrid products={productData} />} />
-        <Route path="/bags" element={<ProductGrid products={productData} />} />
-        <Route path="/sale" element={<ProductGrid products={productData} />} />
-        <Route path="/important-info" element={<div>Important Info</div>} />
-        <Route path="/login" element={<AuthComponent />} />
+      <Routes>
+        <Route path="/" element={<Home products={sampleProducts} />} />
+        <Route path="/abayas" element={<Abaya products={sampleProducts} />} />
+        <Route path="/bags" element={<Bag />} />
+        <Route path="/sale" element={<Sale />} />
+        <Route path="/important-info" element={<Info />} />
       </Routes>
       <Footer />
     </Router>
   );
-};
+}
 
 export default App;

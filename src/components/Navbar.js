@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaUserAlt, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const NavbarWrapper = styled.nav`
   background-color: #003366; /* Dark Navy */
@@ -71,19 +72,6 @@ const MenuWrapper = styled.div`
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.3s ease-in-out;
 
-  a {
-    text-decoration: none;
-    color: #968041;
-    margin: 10px 0;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-
-    &:hover {
-      color: #ffffff;
-    }
-  }
-
   .close-btn {
     align-self: flex-end;
     font-size: 1.5rem;
@@ -92,6 +80,17 @@ const MenuWrapper = styled.div`
     &:hover {
       color: #ffffff;
     }
+  }
+`;
+
+const MenuItem = styled(Link)`
+  text-decoration: none;
+  color: #968041;
+  margin: 10px 0;
+  font-size: 1.2rem;
+
+  &:hover {
+    color: #ffffff;
   }
 `;
 
@@ -125,7 +124,6 @@ const HamburgerIcon = styled.div`
     color: #ffffff;
   }
 
-  /* Hide on desktop screens */
   @media (min-width: 769px) {
     display: none;
   }
@@ -148,7 +146,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <LogoSection>
-          <h1><strong>HouseofNoor</strong></h1>
+          <h1>House of Noor</h1>
           <span>Your Destination for Modest Luxury</span>
         </LogoSection>
 
@@ -161,22 +159,21 @@ const Navbar = () => {
 
       {/* Slide-Out Menu */}
       <MenuWrapper isOpen={menuOpen}>
-        {/* Close Button */}
         <FaTimes className="close-btn" onClick={toggleMenu} />
-        <a href="#home">Home <span>→</span></a>
-        <a href="#abyas">Abayas <span>→</span></a>
-        <a href="#bags">Bags <span>→</span></a>
-        <a href="#sale">Sale <span>→</span></a>
-        <a href="#importantinfo">Important Info <span>→</span></a>
+        <MenuItem to="/" onClick={toggleMenu}>Home</MenuItem>
+        <MenuItem to="/abayas" onClick={toggleMenu}>Abayas</MenuItem>
+        <MenuItem to="/bags" onClick={toggleMenu}>Bags</MenuItem>
+        <MenuItem to="/sale" onClick={toggleMenu}>Sale</MenuItem>
+        <MenuItem to="/important-info" onClick={toggleMenu}>Important Info</MenuItem>
       </MenuWrapper>
 
       {/* Desktop Navigation */}
       <DesktopMenu>
-        <a href="#home">Home</a>
-        <a href="#abaya">Abayas</a>
-        <a href="#bags">Bags</a>
-        <a href="#sale">Sale</a>
-        <a href="#importantinfo">Important Info</a>
+        <Link to="/">Home</Link>
+        <Link to="/abayas">Abayas</Link>
+        <Link to="/bags">Bags</Link>
+        <Link to="/sale">Sale</Link>
+        <Link to="/important-info">Important Info</Link>
       </DesktopMenu>
     </NavbarWrapper>
   );
