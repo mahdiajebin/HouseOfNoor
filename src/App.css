@@ -1,7 +1,9 @@
 .App {
+  background-color: #060e2e; /* Change this color to your desired background */
   text-align: center;
-}
+  color: #968041; /* Gold */
 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

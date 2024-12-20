@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const NavbarWrapper = styled.nav`
-  background-color: #003366; /* Dark Navy */
+  background-color: #060e2e; /* Dark Navy */
   color: #968041; /* Gold */
   padding: 10px 20px;
   position: sticky;
