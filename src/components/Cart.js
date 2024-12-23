@@ -19,26 +19,28 @@ const Cart = () => {
       ) : (
         <div>
           <ul className="cart-items">
-            {cart.map((item) => (
-              <li key={item.id} className="cart-item">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="cart-item-image"
-                />
-                <div className="cart-item-details">
-                  <h3>{item.name}</h3>
-                  <p>Price: ${parseFloat(item.price).toFixed(2)}</p>
-                  <p>Quantity: {item.quantity}</p>
-                  <button
-                    className="remove-item-button"
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </li>
-            ))}
+                {cart.map((item) => (
+        <li key={item.id} className="cart-item">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="cart-item-image"
+          />
+          <div className="cart-item-details">
+            <h3>{item.name}</h3>
+            <p>Price: ${parseFloat(item.price).toFixed(2)}</p>
+            <p>Quantity: {item.quantity}</p>
+            <p>Color: {item.selectedColor}</p> {/* Display selected color */}
+            <p>Size: {item.selectedSize}</p>   {/* Display selected size */}
+            <button
+              className="remove-item-button"
+              onClick={() => removeFromCart(item.id)}
+            >
+              Remove
+            </button>
+          </div>
+        </li>
+                  ))}
           </ul>
 
           <div className="cart-summary">

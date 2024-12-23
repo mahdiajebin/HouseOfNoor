@@ -15,7 +15,7 @@ const sampleProducts = [
   {
     id: 1,
     name: 'Elegant Abaya',
-    price: '$50.00',
+    price: '50.00',
     image: '/assets/IMG_6542.jpeg', // Updated with your image path
     category: 'Abayas',
     onSale: false,
@@ -32,7 +32,7 @@ const sampleProducts = [
   {
     id: 2,
     name: 'Classic Black Abaya',
-    price: '$45.00',
+    price: '45.00',
     image: '/assets/IMG_6606.jpeg', // Updated with your image path
     category: 'Abayas',
     onSale: true,
@@ -49,7 +49,7 @@ const sampleProducts = [
   {
     id: 3,
     name: 'Luxury Leather Bag',
-    price: '$120.00',
+    price: '120.00',
     image: '/assets/IMG_6694.jpeg', // Updated with your image path
     category: 'Bags',
     onSale: false,
@@ -66,7 +66,7 @@ const sampleProducts = [
   {
     id: 4,
     name: 'Chic Handbag',
-    price: '$85.00',
+    price: '85.00',
     image: '/assets/IMG_6734.jpeg', // Updated with your image path
     category: 'Bags',
     onSale: true,
@@ -83,7 +83,7 @@ const sampleProducts = [
   {
     id: 5,
     name: 'Summer Sale Abaya',
-    price: '$35.00',
+    price: '35.00',
     image: '/assets/IMG_6877.jpeg', // Updated with your image path
     category: 'Abayas',
     onSale: true,
@@ -100,7 +100,7 @@ const sampleProducts = [
   {
     id: 6,
     name: 'Stylish Tote Bag',
-    price: '$70.00',
+    price: '70.00',
     image: '/assets/IMG_7398.jpeg', // Updated with your image path
     category: 'Bags',
     onSale: false,
@@ -117,7 +117,7 @@ const sampleProducts = [
   {
     id: 7,
     name: 'Premium Leather Bag',
-    price: '$150.00',
+    price: '150.00',
     image: '/assets/IMG_8816.jpeg', // Updated with your image path
     category: 'Bags',
     onSale: true,
@@ -134,7 +134,7 @@ const sampleProducts = [
   {
     id: 8,
     name: 'Exclusive Designer Abaya',
-    price: '$90.00',
+    price: '90.00',
     image: '/assets/IMG_8816.jpeg', // Updated with your image path
     category: 'Abayas',
     onSale: true,

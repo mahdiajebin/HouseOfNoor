@@ -9,7 +9,9 @@ const ProductDetail = ({ products }) => {
 
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart(); // Get addToCart function from context
-
+  const [selectedColor, setSelectedColor] = useState(product.colors[0]); // Default to first color
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]); // Default to first size
+  
   const handleIncrease = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
@@ -21,44 +23,63 @@ const ProductDetail = ({ products }) => {
   };
 
   const handleAddToCart = () => {
-    // addToCart({ ...product, quantity }); // Pass product with selected quantity
-    const productToAdd = { ...product, quantity: 1 }; 
+    if (!selectedColor || !selectedSize) {
+      alert("Please select both a color and a size.");
+      return; // Prevent adding to cart if either is not selected
+    }
+  
+    const productToAdd = {
+      ...product,
+      quantity: quantity,
+      selectedColor: selectedColor, // Add selected color
+      selectedSize: selectedSize,   // Add selected size
+    };
     addToCart(productToAdd);
     alert(`${product.name} has been added to your cart!`);
   };
-
-  if (!product) {
-    return <p>Product not found</p>; // Handle the case where the product is not found
-  }
-
+  
+  // Disable "Add to Cart" button if either color or size is not selected
+  const isButtonDisabled = !selectedColor || !selectedSize;
+  
   return (
     <div className="product-detail">
       <div className="product-detail-content">
         <div className="product-images">
           <img src={product.image} alt={product.name} />
-          <div className="more-images">
-            {/* Display other images here */}
-            {product.image2 && <img src={product.image2} alt="product-2" />}
-            {product.image3 && <img src={product.image3} alt="product-3" />}
-          </div>
+          {/* Additional images */}
         </div>
+  
         <div className="product-info">
           <h1>{product.name}</h1>
           <p className="price">Regular price: ${product.price}</p>
+  
+                  <div className="colors">
+          {product.colors.map((color) => (
+            <span
+              key={color}
+              className={`color-option ${selectedColor === color ? 'selected' : ''}`}
+              onClick={() => setSelectedColor(color)}
+            >
+              {color}
+            </span>
+          ))}
+        </div>
 
-          <h3>Color</h3>
-          <div className="colors">
-            {product.colors.map((color) => (
-              <span key={color} className="color-option">{color}</span>
-            ))}
-          </div>
+        <h3>Selected Color: {selectedColor}</h3> {/* Display selected color */}
 
-          <h3>Size</h3>
-          <div className="sizes">
-            {product.sizes.map((size) => (
-              <span key={size} className="size-option">{size}</span>
-            ))}
-          </div>
+        <div className="sizes">
+          {product.sizes.map((size) => (
+            <span
+              key={size}
+              className={`size-option ${selectedSize === size ? 'selected' : ''}`}
+              onClick={() => setSelectedSize(size)}
+            >
+              {size}
+            </span>
+          ))}
+        </div>
+
+        <h3>Selected Size: {selectedSize}</h3> {/* Display selected size */}
 
           <h3>Quantity</h3>
           <div className="quantity-controls">
@@ -66,11 +87,16 @@ const ProductDetail = ({ products }) => {
             <span>{quantity}</span>
             <button onClick={handleIncrease}>+</button>
           </div>
+    <h3>Selected Size: {selectedSize}</h3> {/* Display selected size */}
 
           <h3>Description</h3>
           <p>{product.description}</p>
-
-          <button className="add-to-cart" onClick={handleAddToCart}>
+  
+          <button
+            className="add-to-cart"
+            onClick={handleAddToCart}
+            disabled={isButtonDisabled} // Disable button if no color or size is selected
+          >
             Add to cart
           </button>
           <button className="buy-with">Buy with More payment options</button>

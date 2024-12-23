@@ -10,22 +10,20 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Add a product to the cart
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id === product.id);
-      if (existingProduct) {
-        console.log('Updating quantity for:', existingProduct);
-        return prevCart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + product.quantity }
-            : item
-        );
-      }
-      console.log('Adding new product to cart:', product);
-      return [...prevCart, { ...product }];
-    });
-  };
+    // Add a product to the cart
+    const addToCart = (product) => {
+      setCart((prevCart) => {
+        const existingProduct = prevCart.find((item) => item.id === product.id && item.selectedColor === product.selectedColor && item.selectedSize === product.selectedSize);
+        if (existingProduct) {
+          return prevCart.map((item) =>
+            item.id === product.id && item.selectedColor === product.selectedColor && item.selectedSize === product.selectedSize
+              ? { ...item, quantity: item.quantity + product.quantity }
+              : item
+          );
+        }
+        return [...prevCart, { ...product }];
+      });
+    };
 
   // Remove a product from the cart
   const removeFromCart = (productId) => {
