@@ -7,6 +7,9 @@ import Sale from './components/Sale';
 import Info from './components/Info';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
+import { CartProvider } from './contexts/CartContext'; // Import CartProvider
+
 import './App.css';
 const sampleProducts = [
   {
@@ -132,7 +135,7 @@ const sampleProducts = [
     id: 8,
     name: 'Exclusive Designer Abaya',
     price: '$90.00',
-    image: '/assets/IMG_8819.png', // Updated with your image path
+    image: '/assets/IMG_8816.jpeg', // Updated with your image path
     category: 'Abayas',
     onSale: true,
     image2: '/images/suede-sweater-dress-2.jpg',
@@ -150,6 +153,8 @@ const sampleProducts = [
 
 function App() {
   return (
+    <CartProvider>
+
     <div className="App">
     <Router>
       <Navbar />
@@ -161,11 +166,15 @@ function App() {
         <Route path="/important-info" element={<Info />} />
         {/* Route for product detail page */}
         <Route path="/products/:id" element={<ProductDetail products={sampleProducts} />} />
+        <Route path="/cart" element={<Cart />} />
+
 
       </Routes>
       <Footer />
     </Router>
     </div>
+    </CartProvider>
+
   );
 }
 

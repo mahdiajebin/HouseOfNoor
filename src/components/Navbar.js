@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaUserAlt, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import { useCart } from '../contexts/CartContext';
 const NavbarWrapper = styled.nav`
   background-color: #060e2e; /* Dark Navy */
   color: #968041; /* Gold */
@@ -43,20 +43,20 @@ const LogoSection = styled.div`
   }
 `;
 
-const IconWrapper = styled.div`
-  display: flex;
-  gap: 15px;
+// const IconWrapper = styled.div`
+//   display: flex;
+//   gap: 15px;
 
-  svg {
-    cursor: pointer;
-    color: #968041;
-    font-size: 1.2rem;
+//   svg {
+//     cursor: pointer;
+//     color: #968041;
+//     font-size: 1.2rem;
 
-    &:hover {
-      color: #ffffff;
-    }
-  }
-`;
+//     &:hover {
+//       color: #ffffff;
+//     }
+//   }
+// `;
 
 const MenuWrapper = styled.div`
   position: fixed;
@@ -128,9 +128,37 @@ const HamburgerIcon = styled.div`
     display: none;
   }
 `;
+const IconWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  position: relative;
+
+  svg {
+    color: #968041;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+`;
+
+const CartBadge = styled.span`
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  padding: 2px 6px;
+`;
+
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { getTotalItems } = useCart(); // Access cart data
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -153,7 +181,10 @@ const Navbar = () => {
         {/* User and Cart Icons */}
         <IconWrapper>
           <FaUserAlt size={20} />
-          <FaShoppingCart size={20} />
+          <Link to="/cart">
+          <FaShoppingCart />
+          {getTotalItems() > 0 && <CartBadge>{getTotalItems()}</CartBadge>}
+        </Link>
         </IconWrapper>
       </NavbarTop>
 

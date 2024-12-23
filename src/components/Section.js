@@ -10,8 +10,8 @@ const SectionContainer = styled.section`
 `;
 
 const ViewAllButton = styled.button`
-  background-color: #f0f0f0;
-  color: #968041;
+  background-color:  #968041;
+  color:white;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -20,8 +20,8 @@ const ViewAllButton = styled.button`
   text-decoration: none;
 
   &:hover {
-    background-color: #968041;
-    color: white;
+    background-color:#f0f0f0;
+    color: #968041 ;
   }
 `;
 

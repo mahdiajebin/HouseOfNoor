@@ -1,6 +1,6 @@
-// ProductDetail.js
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams for getting URL params
+import { useCart } from '../contexts/CartContext'; // Import the custom hook for cart context
 import './ProductDetail.css'; // Add styles for this page
 
 const ProductDetail = ({ products }) => {
@@ -8,6 +8,7 @@ const ProductDetail = ({ products }) => {
   const product = products.find((prod) => prod.id === parseInt(id)); // Find the product by ID
 
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart(); // Get addToCart function from context
 
   const handleIncrease = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -17,6 +18,13 @@ const ProductDetail = ({ products }) => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    // addToCart({ ...product, quantity }); // Pass product with selected quantity
+    const productToAdd = { ...product, quantity: 1 }; 
+    addToCart(productToAdd);
+    alert(`${product.name} has been added to your cart!`);
   };
 
   if (!product) {
@@ -36,7 +44,7 @@ const ProductDetail = ({ products }) => {
         </div>
         <div className="product-info">
           <h1>{product.name}</h1>
-          <p className="price">Regular price: {product.price}</p>
+          <p className="price">Regular price: ${product.price}</p>
 
           <h3>Color</h3>
           <div className="colors">
@@ -62,7 +70,9 @@ const ProductDetail = ({ products }) => {
           <h3>Description</h3>
           <p>{product.description}</p>
 
-          <button className="add-to-cart">Add to cart</button>
+          <button className="add-to-cart" onClick={handleAddToCart}>
+            Add to cart
+          </button>
           <button className="buy-with">Buy with More payment options</button>
         </div>
       </div>
