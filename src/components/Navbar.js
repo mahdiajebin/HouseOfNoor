@@ -64,7 +64,7 @@ const MenuWrapper = styled.div`
   left: 0;
   height: 100%;
   width: 250px;
-  background-color: #003366;
+  background-color: #060e2e;
   color: #968041;
   display: flex;
   flex-direction: column;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
   background-color: #151a2e ;/* Dark Navy */
-  color: #FFD700; /* Gold */
+  color: ##968041; /* Gold */
   text-align: center;
   padding: 20px;
 `;
