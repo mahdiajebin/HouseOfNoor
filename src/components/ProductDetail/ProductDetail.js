@@ -1,34 +1,55 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom'; 
-import { useCart } from '../contexts/CartContext'; 
+import { useCart } from '../../contexts/CartContext'; 
+import ProductImage from './ProductImage'; // Import the new component
 import './ProductDetail.css'; 
 
 const ProductDetail = ({ products }) => {
   const { id } = useParams();
-  const product = products.find((prod) => prod.id === parseInt(id)); 
+  const product = products.find((prod) => prod.id === parseInt(id));
 
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useCart(); 
+  const { addToCart } = useCart();
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   const handleIncrease = () => setQuantity((prevQuantity) => prevQuantity + 1);
   const handleDecrease = () => {
     if (quantity > 1) setQuantity((prevQuantity) => prevQuantity - 1);
   };
 
   const handleAddToCart = () => {
+    // Ensure both color and size are selected
     if (!selectedColor || !selectedSize) {
       alert("Please select both a color and a size.");
       return;
     }
+
+    // Get the available stock for the selected color and size
+    const availableStock = product.stock[selectedColor]?.[selectedSize] || 0;
+
+    // Check if enough stock is available
+    if (quantity > availableStock) {
+      alert(`Sorry, only ${availableStock} items are available in ${selectedColor} and size ${selectedSize}.`);
+      return;
+    }
+
+    // Create the product object to be added to the cart
     const productToAdd = {
       ...product,
       quantity,
       selectedColor,
       selectedSize,
     };
+
+    // Add the product to the cart
     addToCart(productToAdd);
+
+    // Alert the user that the product has been added to the cart
     alert(`${product.name} has been added to your cart!`);
   };
 
@@ -37,14 +58,8 @@ const ProductDetail = ({ products }) => {
   return (
     <div className="product-detail">
       <div className="product-detail-content">
-        <div className="product-images">
-          <img src={product.image} alt={product.name} />
-          <div className="more-images">
-            {[product.image2, product.image3].map((img, index) => (
-              <img key={index} src={img} alt={`Additional view ${index + 1}`} />
-            ))}
-          </div>
-        </div>
+        {/* Use the new ProductImage component here */}
+        <ProductImage product={product} />
 
         <div className="product-info">
           <h1>{product.name}</h1>
@@ -91,10 +106,10 @@ const ProductDetail = ({ products }) => {
           <button
             className={`add-to-cart ${buttonClass}`}
             onClick={handleAddToCart}
+            disabled={!selectedColor || !selectedSize}
           >
             Add to cart
           </button>
-          <button className="buy-with">Buy with More payment options</button>
         </div>
       </div>
     </div>

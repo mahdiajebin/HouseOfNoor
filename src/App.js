@@ -11,7 +11,7 @@ import Abaya from './components/Abaya';
 import Bag from './components/Bag';
 import Sale from './components/Sale';
 import Info from './components/Info';
-import ProductDetail from './components/ProductDetail';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart';
 
 // Context

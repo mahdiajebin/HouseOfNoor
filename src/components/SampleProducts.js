@@ -10,6 +10,14 @@ const SampleProducts = [
     image3: '/assets/IMG_6542.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -23,6 +31,14 @@ const SampleProducts = [
     image3: '/assets/IMG_6606.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -36,6 +52,14 @@ const SampleProducts = [
     image3: '/assets/IMG_6694.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -49,6 +73,14 @@ const SampleProducts = [
     image3: '/assets/IMG_6734.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -62,6 +94,14 @@ const SampleProducts = [
     image3: '/assets/IMG_6877.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -75,6 +115,14 @@ const SampleProducts = [
     image3: '/assets/IMG_7398.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -88,6 +136,14 @@ const SampleProducts = [
     image3: '/assets/IMG_8816.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   },
   {
@@ -101,6 +157,14 @@ const SampleProducts = [
     image3: '/assets/IMG_8816.jpeg',
     colors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'],
     sizes: ['50', '52', '54', '56', '58', '60'],
+    availableColors: ['Cream', 'Mocha', 'Burnt Sienna', 'Black'], 
+    availableSizes: ['50', '52', '54', '56', '58', '60'],
+    stock: {
+      'Cream': { '50': 10, '52': 5, '54': 8, '56': 12, '58': 7, '60': 6 },
+      'Mocha': { '50': 15, '52': 10, '54': 12, '56': 20, '58': 9, '60': 14 },
+      'Burnt Sienna': { '50': 7, '52': 9, '54': 5, '56': 6, '58': 3, '60': 2 },
+      'Black': { '50': 30, '52': 25, '54': 28, '56': 35, '58': 22, '60': 20 }
+    },
     description: `Our Faux Suede Sweater Dress is a slim fit dress perfect for everyday. It includes 2 pockets, and a closed high neck. The sleeves are rolled, adding a perfect touch of cozy, relaxed style. Please note: NO hijab included. Material is faux suede, a soft and warm material. One must be careful with stains/marks. Iron on LOW HEAT inside out. Material may shrink a little after a few washes, recommended to size up. Sizing: Measurements are true to size, please size UP if you want the length to be at your feet/below your ankles. Otherwise, stick to your usual size.`
   }
 ];
