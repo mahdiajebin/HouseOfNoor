@@ -10,26 +10,31 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-    // Add a product to the cart
-    const addToCart = (product) => {
-      setCart((prevCart) => {
-        const existingProduct = prevCart.find((item) => item.id === product.id && item.selectedColor === product.selectedColor && item.selectedSize === product.selectedSize);
-        if (existingProduct) {
-          return prevCart.map((item) =>
-            item.id === product.id && item.selectedColor === product.selectedColor && item.selectedSize === product.selectedSize
-              ? { ...item, quantity: item.quantity + product.quantity }
-              : item
-          );
-        }
-        return [...prevCart, { ...product }];
-      });
-    };
+  // Add a product to the cart
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find(
+        (item) =>
+          item.id === product.id &&
+          item.selectedColor === product.selectedColor &&
+          item.selectedSize === product.selectedSize
+      );
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id &&
+          item.selectedColor === product.selectedColor &&
+          item.selectedSize === product.selectedSize
+            ? { ...item, quantity: item.quantity + product.quantity }
+            : item
+        );
+      }
+      return [...prevCart, { ...product }];
+    });
+  };
 
   // Remove a product from the cart
   const removeFromCart = (productId) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.id !== productId)
-    );
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
   // Clear the entire cart
@@ -41,6 +46,17 @@ export const CartProvider = ({ children }) => {
   const getTotalItems = () =>
     cart.reduce((total, item) => total + item.quantity, 0);
 
+  // Update the quantity of a product in the cart
+  const updateQuantity = (productId, newQuantity) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: Math.max(1, newQuantity) } // Ensure quantity is at least 1
+          : item
+      )
+    );
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -49,6 +65,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getTotalItems,
+        updateQuantity, // Provide the updateQuantity function
       }}
     >
       {children}

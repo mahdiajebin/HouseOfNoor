@@ -1,0 +1,23 @@
+.hero-wrapper {
+    background: url('//assets/IMG_8819.png') center/cover no-repeat;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .hero-button {
+    background-color: transparent;
+    border: 2px solid gold;
+    color: gold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .hero-button:hover {
+    background-color: gold;
+    color: #060e2e; /* Matches the navy blue theme */
+  }
+  

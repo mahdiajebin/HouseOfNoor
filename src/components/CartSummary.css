@@ -1,0 +1,24 @@
+.cart-summary {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .checkout-button, .clear-cart-button {
+    background: #968041; /* Gold */
+    color: #060e2e; /* Dark navy */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .checkout-button:hover, .clear-cart-button:hover {
+    background: #ffc107; /* Lighter gold */
+  }
+  
+  .clear-cart-button {
+    margin-left: 10px;
+  }
+  

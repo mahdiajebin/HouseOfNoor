@@ -1,13 +1,16 @@
-// Home.js
 import React from 'react';
 import HeroSection from './HeroSection';
 import Section from './Section';
 
-const Home = ({ products }) => {
-  // Ensure products is defined and filter for different categories
-  const abayaProducts = products ? products.filter(product => product.category === 'Abayas').slice(0, 6) : [];
-  const bagProducts = products ? products.filter(product => product.category === 'Bags').slice(0, 6) : [];
-  const saleProducts = products ? products.filter(product => product.onSale).slice(0, 6) : [];
+const Home = ({ products = [] }) => {
+  // Utility function to filter and slice products
+  const getFilteredProducts = (filterFn, limit = 6) =>
+    products.filter(filterFn).slice(0, limit);
+
+  // Filtered products by category or sale
+  const abayaProducts = getFilteredProducts(product => product.category === 'Abayas');
+  const bagProducts = getFilteredProducts(product => product.category === 'Bags');
+  const saleProducts = getFilteredProducts(product => product.onSale);
 
   return (
     <div>

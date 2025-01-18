@@ -1,212 +1,60 @@
 import React, { useState } from 'react';
 import { FaUserAlt, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
-const NavbarWrapper = styled.nav`
-  background-color: #060e2e; /* Dark Navy */
-  color: #968041; /* Gold */
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-`;
-
-const NavbarTop = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 0 10px;
-  }
-`;
-
-const LogoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #968041;
-
-  h1 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-family: 'Cursive', serif;
-    font-weight: bold;
-  }
-
-  span {
-    font-size: 0.7rem;
-    font-style: italic;
-    letter-spacing: 1px;
-  }
-`;
-
-// const IconWrapper = styled.div`
-//   display: flex;
-//   gap: 15px;
-
-//   svg {
-//     cursor: pointer;
-//     color: #968041;
-//     font-size: 1.2rem;
-
-//     &:hover {
-//       color: #ffffff;
-//     }
-//   }
-// `;
-
-const MenuWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 250px;
-  background-color: #060e2e;
-  color: #968041;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
-  transition: transform 0.3s ease-in-out;
-
-  .close-btn {
-    align-self: flex-end;
-    font-size: 1.5rem;
-    cursor: pointer;
-
-    &:hover {
-      color: #ffffff;
-    }
-  }
-`;
-
-const MenuItem = styled(Link)`
-  text-decoration: none;
-  color: #968041;
-  margin: 10px 0;
-  font-size: 1.2rem;
-
-  &:hover {
-    color: #ffffff;
-  }
-`;
-
-const DesktopMenu = styled.div`
-  display: none;
-
-  @media (min-width: 769px) {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
-
-    a {
-      text-decoration: none;
-      color: #968041;
-      font-size: 1rem;
-
-      &:hover {
-        color: #ffffff;
-      }
-    }
-  }
-`;
-
-const HamburgerIcon = styled.div`
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #968041;
-
-  &:hover {
-    color: #ffffff;
-  }
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;
-const IconWrapper = styled.div`
-  display: flex;
-  gap: 15px;
-  position: relative;
-
-  svg {
-    color: #968041;
-    font-size: 1.2rem;
-    cursor: pointer;
-
-    &:hover {
-      color: #ffffff;
-    }
-  }
-`;
-
-const CartBadge = styled.span`
-  position: absolute;
-  top: -5px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  font-size: 0.8rem;
-  border-radius: 50%;
-  padding: 2px 6px;
-`;
-
+import './Navbar.css'; // Import CSS file for styles
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { getTotalItems } = useCart(); // Access cart data
+  const { getTotalItems } = useCart();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
-    <NavbarWrapper>
-      <NavbarTop>
+    <nav className="navbar">
+      <div className="navbar-top">
         {/* Hamburger Icon */}
-        <HamburgerIcon onClick={toggleMenu}>
+        <div className="hamburger-icon" onClick={toggleMenu}>
           <FaBars />
-        </HamburgerIcon>
+        </div>
 
         {/* Logo */}
-        <LogoSection>
+        <div className="logo-section">
           <h1>House of Noor</h1>
           <span>Your Destination for Modest Luxury</span>
-        </LogoSection>
+        </div>
 
         {/* User and Cart Icons */}
-        <IconWrapper>
+        <div className="icon-wrapper">
           <FaUserAlt size={20} />
           <Link to="/cart">
-          <FaShoppingCart />
-          {getTotalItems() > 0 && <CartBadge>{getTotalItems()}</CartBadge>}
-        </Link>
-        </IconWrapper>
-      </NavbarTop>
+            <FaShoppingCart />
+            {getTotalItems() > 0 && <span className="cart-badge">{getTotalItems()}</span>}
+          </Link>
+        </div>
+      </div>
 
       {/* Slide-Out Menu */}
-      <MenuWrapper isOpen={menuOpen}>
+      <div className={`menu-wrapper ${menuOpen ? 'open' : ''}`}>
         <FaTimes className="close-btn" onClick={toggleMenu} />
-        <MenuItem to="/" onClick={toggleMenu}>Home</MenuItem>
-        <MenuItem to="/abayas" onClick={toggleMenu}>Abayas</MenuItem>
-        <MenuItem to="/bags" onClick={toggleMenu}>Bags</MenuItem>
-        <MenuItem to="/sale" onClick={toggleMenu}>Sale</MenuItem>
-        <MenuItem to="/important-info" onClick={toggleMenu}>Important Info</MenuItem>
-      </MenuWrapper>
+        <Link to="/" onClick={toggleMenu}>Home</Link>
+        <Link to="/abayas" onClick={toggleMenu}>Abayas</Link>
+        <Link to="/bags" onClick={toggleMenu}>Bags</Link>
+        <Link to="/sale" onClick={toggleMenu}>Sale</Link>
+        <Link to="/important-info" onClick={toggleMenu}>Important Info</Link>
+      </div>
 
       {/* Desktop Navigation */}
-      <DesktopMenu>
+      <div className="desktop-menu">
         <Link to="/">Home</Link>
         <Link to="/abayas">Abayas</Link>
         <Link to="/bags">Bags</Link>
         <Link to="/sale">Sale</Link>
         <Link to="/important-info">Important Info</Link>
-      </DesktopMenu>
-    </NavbarWrapper>
+      </div>
+    </nav>
   );
 };
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import './Cart.css'; // Add styles for the cart
-import { useCart } from '../contexts/CartContext'; // Custom hook for cart context
+import { useCart } from '../contexts/CartContext'; 
+import CartItem from './CartItem'; 
+import CartSummary from './CartSummary'; 
+import './Cart.css';
 
 const Cart = () => {
-  const { cart, removeFromCart, clearCart, getTotalItems } = useCart();
+  const { cart, removeFromCart, clearCart, getTotalItems, updateQuantity } = useCart();
 
-  // Calculate total price
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -19,40 +20,21 @@ const Cart = () => {
       ) : (
         <div>
           <ul className="cart-items">
-                {cart.map((item) => (
-        <li key={item.id} className="cart-item">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="cart-item-image"
-          />
-          <div className="cart-item-details">
-            <h3>{item.name}</h3>
-            <p>Price: ${parseFloat(item.price).toFixed(2)}</p>
-            <p>Quantity: {item.quantity}</p>
-            <p>Color: {item.selectedColor}</p> {/* Display selected color */}
-            <p>Size: {item.selectedSize}</p>   {/* Display selected size */}
-            <button
-              className="remove-item-button"
-              onClick={() => removeFromCart(item.id)}
-            >
-              Remove
-            </button>
-          </div>
-        </li>
-                  ))}
+            {cart.map((item) => (
+              <CartItem 
+                key={item.id} 
+                item={item} 
+                removeFromCart={removeFromCart}
+                updateQuantity={updateQuantity} // Pass the update function
+              />
+            ))}
           </ul>
-
-          <div className="cart-summary">
-            <h2>Total: ${totalPrice.toFixed(2)}</h2>
-            <button className="checkout-button">Proceed to Checkout</button>
-            <button className="clear-cart-button" onClick={clearCart}>
-              Clear Cart
-            </button>
-          </div>
-          <p>Total Items: {getTotalItems()}</p>
+          <CartSummary 
+            totalItems={getTotalItems()}
+            totalPrice={totalPrice}
+            clearCart={clearCart}
+          />
         </div>
-        
       )}
     </div>
   );

@@ -1,26 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const HeroWrapper = styled.div`
-  background: url('/assets/IMG_8819.png') center/cover no-repeat;  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-`;
-
-const HeroButton = styled.button`
-  background-color: transparent;
-  border: 2px solid gold;
-  color: gold;
-  padding: 10px 20px;
-  cursor: pointer;
-`;
+import './HeroSection.css'; // Import the CSS file for styles
 
 const HeroSection = () => (
-  <HeroWrapper>
-    <HeroButton>Shop Now</HeroButton>
-  </HeroWrapper>
+  <div className="hero-wrapper">
+    <button className="hero-button">Shop Now</button>
+  </div>
 );
 
 export default HeroSection;

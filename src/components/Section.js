@@ -10,8 +10,8 @@ const SectionContainer = styled.section`
 `;
 
 const ViewAllButton = styled.button`
-  background-color:  #968041;
-  color:white;
+  background-color: #968041; /* Golden color */
+  color: white;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -20,8 +20,13 @@ const ViewAllButton = styled.button`
   text-decoration: none;
 
   &:hover {
-    background-color:#f0f0f0;
-    color: #968041 ;
+    background-color: #f0f0f0; /* Lighter background */
+    color: #968041; /* Golden text on hover */
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(150, 128, 65, 0.5); /* Subtle focus ring for accessibility */
   }
 `;
 

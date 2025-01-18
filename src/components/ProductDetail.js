@@ -9,8 +9,8 @@ const ProductDetail = ({ products }) => {
 
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart(); 
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
   
   const handleIncrease = () => setQuantity((prevQuantity) => prevQuantity + 1);
   const handleDecrease = () => {
@@ -32,14 +32,13 @@ const ProductDetail = ({ products }) => {
     alert(`${product.name} has been added to your cart!`);
   };
 
-  const isButtonDisabled = !selectedColor || !selectedSize;
+  const buttonClass = !selectedColor || !selectedSize ? 'disabled' : '';
 
   return (
     <div className="product-detail">
       <div className="product-detail-content">
         <div className="product-images">
           <img src={product.image} alt={product.name} />
-          {/* Display additional images (image2 and image3) */}
           <div className="more-images">
             {[product.image2, product.image3].map((img, index) => (
               <img key={index} src={img} alt={`Additional view ${index + 1}`} />
@@ -90,9 +89,8 @@ const ProductDetail = ({ products }) => {
           <p>{product.description}</p>
 
           <button
-            className="add-to-cart"
+            className={`add-to-cart ${buttonClass}`}
             onClick={handleAddToCart}
-            disabled={isButtonDisabled}
           >
             Add to cart
           </button>
