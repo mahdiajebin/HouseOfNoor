@@ -7,7 +7,7 @@ const ProductImage = ({ product }) => {
     <div className="product-images">
       <img src={product.image} alt={product.name} />
       <div className="more-images">
-        {[product.image2, product.image3].map((img, index) => (
+        {[product.image1, product.image2].map((img, index) => (
           <img key={index} src={img} alt={`Additional view ${index + 1}`} />
         ))}
       </div>

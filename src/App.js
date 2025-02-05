@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'; // Global styles
 
@@ -17,22 +18,66 @@ import Cart from './components/Cart';
 // Context
 import { CartProvider } from './contexts/CartContext';
 
-// Data
-import sampleProducts from './components/SampleProducts';
-
 function App() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:1337/api/products?populate=*') // Ensure images are included
+      .then(response => response.json())
+      .then(data => {
+        const formattedProducts = data.data.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          category: item.category,
+          onSale: item.onSale,
+          colors: item.colors,
+          sizes: item.sizes,
+          stock: item.stock,
+          description: item.description,
+          image: item.image && item.image[0] ? `http://localhost:1337${item.image[0].url}` : null,
+          image1: item.image1 && item.image1[0] ? `http://localhost:1337${item.image1[0].url}` : null,
+          image2: item.image2 && item.image2[0] ? `http://localhost:1337${item.image2[0].url}` : null,
+          createdAt: item.createdAt,
+        }));
+        setProducts(formattedProducts);
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
+  // useEffect(() => {
+  //   fetch('http://localhost:1337/api/products')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log("Strapi Response:", data); // Check response in console
+  //     })
+  //     .catch(error => console.error('Error fetching products:', error));
+  // }, []);
+  
+  // fetch('http://localhost:1337/api/products?populate=*')
+  // .then(res => res.json())
+  // .then(data => console.log(" strapi image",data));
+
+  // fetch('http://localhost:1337/api/products?populate=*')
+  // .then(response => response.json())
+  // .then(data => {
+  //   console.log("Strapi Response:", data); // Log full response
+
+  // })
+  // .catch(error => console.error('Error fetching products:', error));
+
   return (
     <CartProvider>
       <div className="App">
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home products={sampleProducts} />} />
-            <Route path="/abayas" element={<Abaya products={sampleProducts} />} />
-            <Route path="/bags" element={<Bag products={sampleProducts} />} />
-            <Route path="/sale" element={<Sale products={sampleProducts} />} />
+            <Route path="/" element={<Home products={products} />} />
+            <Route path="/abayas" element={<Abaya products={products} />} />
+            <Route path="/bags" element={<Bag products={products} />} />
+            <Route path="/sale" element={<Sale products={products} />} />
             <Route path="/important-info" element={<Info />} />
-            <Route path="/products/:id" element={<ProductDetail products={sampleProducts} />} />
+            <Route path="/products/:id" element={<ProductDetail products={products} />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />

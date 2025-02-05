@@ -2,12 +2,12 @@ import React from 'react';
 import HeroSection from './HeroSection';
 import Section from './Section';
 
-const Home = ({ products = [] }) => {
+const Home = ({ products }) => {
   // Utility function to filter and slice products
   const getFilteredProducts = (filterFn, limit = 6) =>
     products.filter(filterFn).slice(0, limit);
 
-  // Filtered products by category or sale
+  // Ensure the data matches your product structure
   const abayaProducts = getFilteredProducts(product => product.category === 'Abayas');
   const bagProducts = getFilteredProducts(product => product.category === 'Bags');
   const saleProducts = getFilteredProducts(product => product.onSale);
