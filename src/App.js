@@ -17,12 +17,39 @@ import Cart from './components/Cart';
 
 // Context
 import { CartProvider } from './contexts/CartContext';
-
 function App() {
   const [products, setProducts] = useState([]);
+ // const API_URL = "https://strapihouseofnoor.onrender.com";
+   const Local_URL = "http://localhost:1337";
 
+
+  // useEffect(() => {
+  //   fetch(`${API_URL}/api/products?populate=*`) // Ensure images are included
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const formattedProducts = data.data.map(item => ({
+  //         id: item.id,
+  //         name: item.name,
+  //         price: item.price,
+  //         category: item.category,
+  //         onSale: item.onSale,
+  //         colors: item.colors,
+  //         sizes: item.sizes,
+  //         stock: item.stock,
+  //         description: item.description,
+  //         image: item.image && item.image[0] ? `${API_URL}${item.image[0].url}` : null,
+  //         image1: item.image1 && item.image1[0] ? `${API_URL}${item.image1[0].url}` : null,
+  //         image2: item.image2 && item.image2[0] ? `${API_URL}${item.image2[0].url}` : null,
+  //         createdAt: item.createdAt,
+  //       }));
+  //       setProducts(formattedProducts);
+  //     })
+  //     .catch(error => console.error('Error fetching products:', error));
+  // }, []);
+
+  //local
   useEffect(() => {
-    fetch('http://localhost:1337/api/products?populate=*') // Ensure images are included
+    fetch(`${Local_URL}/api/products?populate=*`) // Ensure images are included
       .then(response => response.json())
       .then(data => {
         const formattedProducts = data.data.map(item => ({
@@ -35,9 +62,9 @@ function App() {
           sizes: item.sizes,
           stock: item.stock,
           description: item.description,
-          image: item.image && item.image[0] ? `http://localhost:1337${item.image[0].url}` : null,
-          image1: item.image1 && item.image1[0] ? `http://localhost:1337${item.image1[0].url}` : null,
-          image2: item.image2 && item.image2[0] ? `http://localhost:1337${item.image2[0].url}` : null,
+          image: item.image && item.image[0] ? `${Local_URL}${item.image[0].url}` : null,
+          image1: item.image1 && item.image1[0] ? `${Local_URL}${item.image1[0].url}` : null,
+          image2: item.image2 && item.image2[0] ? `${Local_URL}${item.image2[0].url}` : null,
           createdAt: item.createdAt,
         }));
         setProducts(formattedProducts);
@@ -54,9 +81,9 @@ function App() {
   //     .catch(error => console.error('Error fetching products:', error));
   // }, []);
   
-  // fetch('http://localhost:1337/api/products?populate=*')
-  // .then(res => res.json())
-  // .then(data => console.log(" strapi image",data));
+  fetch(`${Local_URL}/api/products?populate=*`)
+  .then(res => res.json())
+  .then(data => console.log(" strapi image",data));
 
   // fetch('http://localhost:1337/api/products?populate=*')
   // .then(response => response.json())
